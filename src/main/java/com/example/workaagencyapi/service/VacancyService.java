@@ -225,9 +225,9 @@ public class VacancyService {
      *
      * @param maxVacancies   the maximum number of vacancies to save
      * @param checkExistence whether to check for existing vacancies before saving
-     *                       <p>
-     *                       Vacancies are saved from the end of the list to the beginning. If `checkExistence` is true, only new
-     *                       vacancies (not already in the database) are saved. The vacancy list is cleared after saving.
+     *   <p>
+     *   Vacancies are saved from the end of the list to the beginning. If `checkExistence` is true, only new
+     *   vacancies (not already in the database) are saved. The vacancy list is cleared after saving.
      */
     private void saveVacanciesToDB(int maxVacancies, boolean checkExistence) {
         if (vacancyList == null || vacancyList.isEmpty()) {
