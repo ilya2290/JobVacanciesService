@@ -248,7 +248,8 @@ public class VacancyService {
 
                     logger.info(STR."Added vacancy: \{currentVacancy}");
                 }
-            } else
+            }
+            else
                 vacanciesRepository.save(currentVacancy);
         }
         this.vacancyList.clear();
