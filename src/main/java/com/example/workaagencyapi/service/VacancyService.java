@@ -168,6 +168,7 @@ public class VacancyService {
             connection.connect();
 
             int responseCode = connection.getResponseCode();
+
             if (responseCode != 200) {
                 throw new IllegalStateException(STR."HttpResponseCode: \{responseCode}");
             }
