@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-vacancy-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: java-vacancy-service
+  template:
+    metadata:
+      labels:
+        app: java-vacancy-service
+    spec:
+      containers:
+        - name: java-vacancy-service
+          image: gcr.io/job-vacancy-service/java-vacancy-service-app:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://35.222.3.37:5432/db_job_vacancies
+            - name: SPRING_DATASOURCE_USERNAME
+              value: ilya
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: 2290ilya
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
