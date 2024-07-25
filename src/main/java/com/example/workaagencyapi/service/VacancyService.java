@@ -96,7 +96,6 @@ public class VacancyService {
      */
     public Page<VacancyTable> getPaginatedVacancies(int page) {
         Pageable pageable = PageRequest.of(page, this.configLoader.getPageVacanciesCount(), Sort.by(Sort.Order.desc("id")));
-        //Pageable pageable = PageRequest.of(page, 20);
         return vacanciesRepository.findAll(pageable);
     }
 
