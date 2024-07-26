@@ -33,7 +33,7 @@ The Docker image for the application was built and pushed to Google Container Re
   job-vacancy-service
 - Service URL: https://job-vacancy-service-nvi4vhwu3a-uc.a.run.app
 
-##API 
+## API 
 1. Retrieves a paginated list of vacancies based on the specified page number.
    The pagination vacancies count set by 20.
   "/api/v1/vacancies"
