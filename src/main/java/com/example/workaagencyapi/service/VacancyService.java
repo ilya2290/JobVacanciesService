@@ -158,28 +158,27 @@ public class VacancyService {
      * @param page the page number to fetch
      */
     public void jobParsingService(int page) {
+        HttpURLConnection connection = null;
+        Scanner scanner = null;
 
         try {
-            URL url = URI.create(STR."\{API_URL}?page=\{page}").toURL();
-
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            URL url = URI.create(String.format("%s?page=%d", API_URL, page)).toURL();
+            connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
 
             int responseCode = connection.getResponseCode();
 
             if (responseCode != 200) {
-                throw new IllegalStateException(STR."HttpResponseCode: \{responseCode}");
+                throw new IllegalStateException(String.format("HttpResponseCode: %d", responseCode));
             }
 
             StringBuilder inline = new StringBuilder();
-            Scanner scanner = new Scanner(url.openStream());
+            scanner = new Scanner(url.openStream());
 
             while (scanner.hasNext()) {
                 inline.append(scanner.nextLine());
             }
-
-            scanner.close();
 
             JsonNode root = objectMapper.readTree(inline.toString());
             JsonNode jobArray = root.path("data");
@@ -189,7 +188,14 @@ public class VacancyService {
                 vacancyList.add(vacancy);
             }
         } catch (IOException e) {
-            logger.error(e);
+            logger.error("Error occurred while parsing job data: ", e);
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
     }
 
