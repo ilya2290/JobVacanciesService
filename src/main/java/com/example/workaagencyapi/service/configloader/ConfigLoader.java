@@ -4,7 +4,7 @@
  * <=================================>
  */
 
-package com.example.workaagencyapi.service.config;
+package com.example.workaagencyapi.service.configloader;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

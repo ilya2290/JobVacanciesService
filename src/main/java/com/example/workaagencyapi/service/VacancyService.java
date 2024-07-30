@@ -7,7 +7,7 @@
 package com.example.workaagencyapi.service;
 
 import com.example.workaagencyapi.repositories.VacanciesRepository;
-import com.example.workaagencyapi.service.config.ConfigLoader;
+import com.example.workaagencyapi.service.configloader.ConfigLoader;
 import com.example.workaagencyapi.tables.VacancyTable;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
